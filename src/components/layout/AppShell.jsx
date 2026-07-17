@@ -63,7 +63,7 @@ function NavTabs({ page, onNavigate }) {
  */
 function ProfileMenu({ onOpenAuth }) {
   const { t } = useLang()
-  const { user, setUser } = useAppState()
+  const { user, logout } = useAppState()
   const [open, setOpen] = useState(false)
   const rootRef = useRef(null)
 
@@ -86,7 +86,7 @@ function ProfileMenu({ onOpenAuth }) {
   const items = user
     ? [
         { key: 'dashboard', label: t.auth.dashboard, onClick: () => {} },
-        { key: 'logout', label: t.auth.logout, onClick: () => setUser(null), danger: true },
+        { key: 'logout', label: t.auth.logout, onClick: logout, danger: true },
       ]
     : [
         { key: 'login', label: t.auth.login, onClick: () => onOpenAuth('login') },

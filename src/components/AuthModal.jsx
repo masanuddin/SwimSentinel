@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLang } from '../i18n/LangContext'
 import { useAppState } from '../state/AppState'
+import { supabase } from '../lib/supabase'
 import { Button } from './ui/Button'
 import { Field } from './ui/Input'
 
@@ -8,9 +9,9 @@ import { Field } from './ui/Input'
  * AuthModal — card Login/Register (desain dari wireframes/, diadaptasi ke
  * dark theme SwimSentinel). Tab di dalam card untuk pindah mode.
  *
- * CATATAN INTEGRASI: submit & tombol Google saat ini MOCK (langsung mengisi
- * `user` di AppState supaya UI logged-in bisa dites). Sesi berikutnya diganti
- * Supabase: signInWithPassword / signUp / signInWithOAuth('google').
+ * Auth via Supabase (signInWithPassword / signUp / signInWithOAuth google).
+ * Kalau .env.local belum diisi (supabase = null) → fallback mock login
+ * supaya demo tetap jalan tanpa backend.
  */
 
 function GoogleIcon({ className = 'h-4 w-4' }) {
@@ -64,6 +65,8 @@ export function AuthModal({ mode, onClose, onSwitchMode }) {
   const M = A.modal
   const { setUser } = useAppState()
   const [error, setError] = useState(null)
+  const [info, setInfo] = useState(null)
+  const [busy, setBusy] = useState(false)
 
   const isLogin = mode === 'login'
 
@@ -81,26 +84,74 @@ export function AuthModal({ mode, onClose, onSwitchMode }) {
 
   const handleSwitch = (m) => {
     setError(null)
+    setInfo(null)
     onSwitchMode(m)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setError(null)
+    setInfo(null)
     const fd = new FormData(e.currentTarget)
     const email = fd.get('email')
+    const password = fd.get('password')
 
-    if (isLogin) {
-      // TODO Supabase: supabase.auth.signInWithPassword({ email, password })
-      setUser({ email })
-    } else {
-      if (fd.get('password') !== fd.get('passwordConfirm')) {
-        setError(M.passwordMismatch)
-        return
-      }
-      // TODO Supabase: supabase.auth.signUp({ email, password, options: { data } })
-      setUser({ email, name: fd.get('fullName') })
+    if (!isLogin && password !== fd.get('passwordConfirm')) {
+      setError(M.passwordMismatch)
+      return
     }
-    onClose()
+
+    // Fallback mock kalau Supabase belum dikonfigurasi (.env.local kosong)
+    if (!supabase) {
+      setUser(isLogin ? { email } : { email, name: fd.get('fullName') })
+      onClose()
+      return
+    }
+
+    setBusy(true)
+    try {
+      if (isLogin) {
+        const { error: err } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        })
+        if (err) {
+          setError(err.message)
+          return
+        }
+        onClose() // user di-set oleh onAuthStateChange di AppState
+      } else {
+        const { data, error: err } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: fd.get('fullName'), phone: fd.get('phone') },
+          },
+        })
+        if (err) {
+          setError(err.message)
+          return
+        }
+        // Tanpa session = project masih mewajibkan konfirmasi email
+        if (data.session) onClose()
+        else setInfo(M.checkEmail)
+      }
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const handleGoogle = async () => {
+    setError(null)
+    if (!supabase) {
+      setError(M.notConfigured)
+      return
+    }
+    const { error: err } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: window.location.origin },
+    })
+    if (err) setError(err.message)
   }
 
   return (
@@ -166,9 +217,14 @@ export function AuthModal({ mode, onClose, onSwitchMode }) {
           )}
 
           {error && <p className="text-sm font-medium text-danger">{error}</p>}
+          {info && <p className="text-sm font-medium text-safe">{info}</p>}
 
-          <Button type="submit" className="w-full justify-center py-2.5">
-            {isLogin ? A.login : A.register}
+          <Button
+            type="submit"
+            disabled={busy}
+            className="w-full justify-center py-2.5"
+          >
+            {busy ? M.loading : isLogin ? A.login : A.register}
           </Button>
         </form>
 
@@ -180,8 +236,12 @@ export function AuthModal({ mode, onClose, onSwitchMode }) {
           <div className="h-px flex-1 bg-border" />
         </div>
 
-        {/* TODO Supabase: supabase.auth.signInWithOAuth({ provider: 'google' }) */}
-        <Button variant="ghost" className="w-full justify-center py-2.5">
+        <Button
+          variant="ghost"
+          disabled={busy}
+          onClick={handleGoogle}
+          className="w-full justify-center py-2.5"
+        >
           <GoogleIcon />
           {M.google}
         </Button>

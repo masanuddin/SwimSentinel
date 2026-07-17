@@ -8,6 +8,7 @@ import {
   useState,
 } from 'react'
 import { primeAudio, startBuzzer, stopBuzzer } from '../audio/buzzer'
+import { supabase } from '../lib/supabase'
 
 /**
  * Shared state seluruh app (in-memory, tanpa backend/storage).
@@ -80,9 +81,33 @@ export function AppStateProvider({ children }) {
   const [swimmers, setSwimmers] = useState(seedSwimmers)
   const [alarms, setAlarms] = useState(seedAlarms)
   const [muted, setMuted] = useState(false)
-  // Auth stub — nanti diisi session Supabase; null = belum login.
-  // Bentuk minimal yang dipakai UI: { email, name? }
+  // Auth — diisi session Supabase (atau mock kalau env belum diisi).
+  // Bentuk yang dipakai UI: { email, name? } | null
   const [user, setUser] = useState(null)
+
+  // Sinkron dengan session Supabase: restore saat load + dengarkan perubahan
+  // (login/logout/OAuth redirect). Tanpa env, efek ini tidak jalan → mock.
+  useEffect(() => {
+    if (!supabase) return
+    const mapUser = (session) =>
+      session?.user
+        ? {
+            email: session.user.email,
+            name: session.user.user_metadata?.full_name ?? null,
+          }
+        : null
+    supabase.auth.getSession().then(({ data }) => setUser(mapUser(data.session)))
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) =>
+      setUser(mapUser(session)),
+    )
+    return () => sub.subscription.unsubscribe()
+  }, [])
+
+  /** Logout: akhiri session Supabase (atau bersihkan mock user). */
+  const logout = useCallback(async () => {
+    if (supabase) await supabase.auth.signOut()
+    setUser(null)
+  }, [])
 
   // Mirror swimmers untuk dibaca dari dalam timer (hindari closure basi)
   const swimmersRef = useRef(swimmers)
@@ -246,6 +271,7 @@ export function AppStateProvider({ children }) {
       muted,
       user,
       setUser,
+      logout,
       hasActiveAlarm,
       addAlarm,
       updateSwimmer,
@@ -261,6 +287,7 @@ export function AppStateProvider({ children }) {
       alarms,
       muted,
       user,
+      logout,
       hasActiveAlarm,
       addAlarm,
       updateSwimmer,

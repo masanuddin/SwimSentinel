@@ -32,6 +32,11 @@ export const strings = {
         terms: 'Dengan melanjutkan, Anda menyetujui Ketentuan Layanan kami.',
         passwordMismatch: 'Konfirmasi kata sandi tidak cocok.',
         close: 'Tutup',
+        loading: 'Memproses…',
+        checkEmail:
+          'Pendaftaran berhasil — cek email Anda untuk konfirmasi, lalu login.',
+        notConfigured:
+          'Supabase belum dikonfigurasi — isi .env.local terlebih dahulu.',
       },
     },
     toast: {
@@ -212,6 +217,11 @@ export const strings = {
         terms: 'By clicking continue, you are agreeing to our Terms of Service.',
         passwordMismatch: 'Password confirmation does not match.',
         close: 'Close',
+        loading: 'Processing…',
+        checkEmail:
+          'Registration successful — check your email to confirm, then log in.',
+        notConfigured:
+          'Supabase is not configured — fill in .env.local first.',
       },
     },
     toast: {
