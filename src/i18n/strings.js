@@ -6,7 +6,6 @@ export const strings = {
   id: {
     appName: 'TirtaJaga',
     appTagline: 'Pool Safety Monitoring',
-    live: 'LIVE',
     muteAlarm: 'Bisukan alarm',
     unmuteAlarm: 'Bunyikan alarm',
     comingSoon: 'Segera — sprint berikutnya',
@@ -79,7 +78,6 @@ export const strings = {
   en: {
     appName: 'TirtaJaga',
     appTagline: 'Pool Safety Monitoring',
-    live: 'LIVE',
     muteAlarm: 'Mute alarm',
     unmuteAlarm: 'Unmute alarm',
     comingSoon: 'Coming soon — next sprint',

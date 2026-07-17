@@ -25,7 +25,7 @@ function CtaButton({ onNavigate, children, className = '' }) {
 
 function Hero({ L, onNavigate }) {
   return (
-    <section className="relative flex h-[calc(100vh-4rem)] min-h-[560px] flex-col overflow-hidden">
+    <section className="relative flex h-[calc(100svh-6.5rem)] min-h-[540px] flex-col overflow-hidden lg:h-[calc(100vh-4rem)]">
       {/* Lapisan background: fallback animasi → video → overlay gelap */}
       <div className="hero-bg-anim absolute inset-0" />
       <video
@@ -39,7 +39,7 @@ function Hero({ L, onNavigate }) {
       </video>
       <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-bg/40 to-bg" />
 
-      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col px-6 py-8 lg:px-8">
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-7xl flex-col px-4 py-6 md:px-6 md:py-8 lg:px-8">
         {/* Baris atas: lead kiri + statistik kanan */}
         <div className="grid gap-6 lg:grid-cols-2">
           <p className="max-w-xl text-sm text-text/80 md:text-base">
@@ -88,7 +88,7 @@ function SectionHeader({ kicker, heading }) {
 
 function ProblemSection({ L }) {
   return (
-    <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
       <SectionHeader kicker={L.problemKicker} heading={L.problemHeading} />
       <div className="grid gap-4 md:grid-cols-3">
         {L.problems.map((p) => (
@@ -106,7 +106,7 @@ function ProblemSection({ L }) {
 
 function HowItWorksSection({ L }) {
   return (
-    <section className="mx-auto w-full max-w-7xl px-6 py-16 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
       <SectionHeader kicker={L.howKicker} heading={L.howHeading} />
       <div className="grid gap-4 md:grid-cols-3">
         {L.steps.map((s, i) => (
@@ -130,7 +130,7 @@ function HowItWorksSection({ L }) {
 
 function FinalCtaSection({ L, onNavigate }) {
   return (
-    <section className="mx-auto w-full max-w-7xl px-6 pb-20 pt-4 lg:px-8">
+    <section className="mx-auto w-full max-w-7xl px-4 pb-16 pt-4 md:px-6 md:pb-20 lg:px-8">
       <div className="rounded-md border border-border bg-panel px-6 py-12 text-center md:py-16">
         <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
           {L.finalHeading}
