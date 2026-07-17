@@ -107,6 +107,9 @@ function ProblemSection({ L }) {
   )
 }
 
+// Ilustrasi tiap langkah (urutan sama dengan L.steps), file di public/
+const STEP_IMAGES = ['/iot.png', '/drowning.png', '/alarm.png']
+
 function HowItWorksSection({ L }) {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-12 md:px-6 md:py-16 lg:px-8">
@@ -117,6 +120,11 @@ function HowItWorksSection({ L }) {
             <div className="num mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md border border-accent/50 bg-accent/15 text-base font-bold text-accent">
               {i + 1}
             </div>
+            <img
+              src={STEP_IMAGES[i]}
+              alt={s.title}
+              className="mb-3 h-40 w-full rounded-md border border-border object-cover"
+            />
             <h3 className="mb-2 text-base font-semibold text-text">
               {s.title}
             </h3>
@@ -124,9 +132,6 @@ function HowItWorksSection({ L }) {
           </Panel>
         ))}
       </div>
-      <blockquote className="mt-8 rounded-md border-l-2 border-accent bg-panel px-5 py-4 text-sm italic leading-relaxed text-muted md:text-base">
-        {L.fusionNote}
-      </blockquote>
     </section>
   )
 }

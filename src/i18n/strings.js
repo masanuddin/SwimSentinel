@@ -182,8 +182,6 @@ export const strings = {
           body: 'Buzzer berbunyi keras, dashboard menampilkan zona persis korban, dan insiden tercatat otomatis untuk laporan.',
         },
       ],
-      fusionNote:
-        '"Sinyal radio memang lemah di dalam air karena itu gelang bekerja di fase meronta di permukaan, lalu kamera bawah air mengonfirmasi saat korban sudah terendam."',
       finalHeading: 'Lihat sistemnya bekerja',
       finalBody:
         'Picu skenario tenggelam di halaman Simulasi: alarm berbunyi, zona menyala merah di Map, dan insiden tercatat di Report semuanya live.',
@@ -366,8 +364,6 @@ export const strings = {
           body: 'The buzzer sounds, the dashboard shows the victim’s exact zone, and the incident is logged automatically for reports.',
         },
       ],
-      fusionNote:
-        '"Radio signals are indeed weak underwater that’s why the wristband works during the surface struggling phase, and the underwater camera confirms once the victim submerges."',
       finalHeading: 'See the system in action',
       finalBody:
         'Trigger a drowning scenario on the Simulation page: the alarm sounds, the zone turns red on the Map, and the incident is logged in Reports all live.',
