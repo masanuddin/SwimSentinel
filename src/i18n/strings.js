@@ -27,6 +27,23 @@ export const strings = {
       danger: 'Bahaya',
     },
     zone: 'Zona',
+    map: {
+      subtitle:
+        'Pantauan langsung seluruh zona kolam — saat alarm, lokasi korban muncul di sini.',
+      mapPanel: 'Peta Kolam — Live',
+      zonesPanel: 'Status Zona',
+      alarmsPanel: 'Alarm Aktif',
+      respond: 'Tanggapi',
+      responseTime: 'Respons',
+      noAlarm: 'Tidak ada alarm aktif',
+      allSafe: 'Semua zona terpantau aman.',
+      swimmersShort: 'perenang',
+      stats: {
+        inWater: 'Di Air',
+        onDeck: 'Di Deck',
+        activeAlarms: 'Alarm Aktif',
+      },
+    },
     sim: {
       subtitle:
         'Drag karakter untuk memindahkan (deck ↔ kolam), klik karakter di air untuk memicu skenario tenggelam.',
@@ -126,6 +143,23 @@ export const strings = {
       danger: 'Danger',
     },
     zone: 'Zone',
+    map: {
+      subtitle:
+        'Live view of every pool zone — when an alarm fires, the victim’s location appears here.',
+      mapPanel: 'Pool Map — Live',
+      zonesPanel: 'Zone Status',
+      alarmsPanel: 'Active Alarms',
+      respond: 'Respond',
+      responseTime: 'Response',
+      noAlarm: 'No active alarms',
+      allSafe: 'All zones monitored and safe.',
+      swimmersShort: 'swimmers',
+      stats: {
+        inWater: 'In Water',
+        onDeck: 'On Deck',
+        activeAlarms: 'Active Alarms',
+      },
+    },
     sim: {
       subtitle:
         'Drag a character to move them (deck ↔ pool), click a character in the water to trigger a drowning scenario.',

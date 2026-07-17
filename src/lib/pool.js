@@ -25,3 +25,24 @@ export function zoneFromPos(x, y) {
   )
   return z ? z.id : null
 }
+
+/**
+ * Status visual sebuah zona (dipakai Simulasi & Map biar konsisten):
+ * 'alarm' (ada alarm aktif) > 'danger' (ada yang terdeteksi diam) >
+ * 'warn' (ada yang meronta) > 'ok'.
+ */
+export function zoneVisualState(zoneId, swimmers, activeAlarms) {
+  if (activeAlarms.some((a) => a.zoneId === zoneId)) return 'alarm'
+  const inZone = swimmers.filter((s) => s.zoneId === zoneId)
+  if (inZone.some((s) => s.status === 'drowning')) return 'danger'
+  if (inZone.some((s) => s.status === 'struggling')) return 'warn'
+  return 'ok'
+}
+
+/** Kelas Tailwind untuk kotak zona per status visual. */
+export const ZONE_CLS = {
+  alarm: 'alarm-blink border-danger/80',
+  danger: 'border-danger/60 bg-danger/15',
+  warn: 'border-warn/60 bg-warn/15',
+  ok: 'border-accent/30 bg-accent/10',
+}

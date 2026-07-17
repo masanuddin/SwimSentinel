@@ -4,7 +4,13 @@ import { useAppState, CONFIRM_SEC } from '../state/AppState'
 import { Panel } from '../components/ui/Panel'
 import { Button } from '../components/ui/Button'
 import { StatusPill } from '../components/ui/StatusPill'
-import { POOL_RECT, ZONE_RECTS, zoneFromPos } from '../lib/pool'
+import {
+  POOL_RECT,
+  ZONE_RECTS,
+  ZONE_CLS,
+  zoneFromPos,
+  zoneVisualState,
+} from '../lib/pool'
 
 /**
  * M2 — Simulasi (jantung demo).
@@ -87,21 +93,6 @@ function SwimmerToken({ s, alarmed, S, onPointerDown, onPointerMove, onPointerUp
       </div>
     </div>
   )
-}
-
-function zoneVisualState(zoneId, swimmers, activeAlarms) {
-  if (activeAlarms.some((a) => a.zoneId === zoneId)) return 'alarm'
-  const inZone = swimmers.filter((s) => s.zoneId === zoneId)
-  if (inZone.some((s) => s.status === 'drowning')) return 'danger'
-  if (inZone.some((s) => s.status === 'struggling')) return 'warn'
-  return 'ok'
-}
-
-const ZONE_CLS = {
-  alarm: 'alarm-blink border-danger/80',
-  danger: 'border-danger/60 bg-danger/15',
-  warn: 'border-warn/60 bg-warn/15',
-  ok: 'border-accent/30 bg-accent/10',
 }
 
 function PoolView({ swimmers, activeAlarms, S, t, areaRef, handlers }) {
