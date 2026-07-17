@@ -4,6 +4,7 @@ import { useAppState } from '../state/AppState'
 import { Panel } from '../components/ui/Panel'
 import { Button } from '../components/ui/Button'
 import { StatusPill } from '../components/ui/StatusPill'
+import { StatTile } from '../components/ui/StatTile'
 import {
   POOL_RECT,
   ZONE_RECTS,
@@ -97,23 +98,6 @@ function PoolMap({ swimmers, activeAlarms, t }) {
           alarmed={activeAlarms.some((a) => a.swimmerId === s.id)}
         />
       ))}
-    </div>
-  )
-}
-
-function StatTile({ value, label, danger = false }) {
-  return (
-    <div
-      className={`rounded-md border px-4 py-3 ${
-        danger && value > 0
-          ? 'alarm-blink border-danger'
-          : 'border-border bg-panel'
-      }`}
-    >
-      <div className="num text-2xl font-bold">{value}</div>
-      <div className="mt-0.5 text-xs font-medium uppercase tracking-wider text-muted">
-        {label}
-      </div>
     </div>
   )
 }

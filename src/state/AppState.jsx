@@ -43,15 +43,35 @@ const seedSwimmers = [
 ]
 
 const HOUR = 60 * 60 * 1000
+const DAY = 24 * HOUR
 
-/** Alarm lampau (resolved) biar Report punya data sejak awal. */
+/**
+ * Riwayat alarm mock ±6 bulan (resolved) — bahan grafik bulanan, heatmap
+ * zona & statistik respons di Report. Zona 3 sengaja paling sering supaya
+ * rekomendasi personil muncul dari data. 3 entri terakhir = hari ini.
+ */
 /** @type {import('./types').Alarm[]} */
-const seedAlarms = [
-  { id: 'AL-001', timestamp: Date.now() - 26 * HOUR, zoneId: 3, swimmerId: 'BR-07', responseSec: 14, resolved: true },
-  { id: 'AL-002', timestamp: Date.now() - 8 * HOUR, zoneId: 1, swimmerId: 'BR-04', responseSec: 9, resolved: true },
-  { id: 'AL-003', timestamp: Date.now() - 5 * HOUR, zoneId: 3, swimmerId: 'BR-11', responseSec: 21, resolved: true },
-  { id: 'AL-004', timestamp: Date.now() - 2 * HOUR, zoneId: 2, swimmerId: 'BR-02', responseSec: 12, resolved: true },
-]
+const seedAlarms = (() => {
+  // [hari yang lalu, zoneId]
+  const spec = [
+    [170, 3], [162, 1], [155, 3],
+    [140, 2], [131, 3], [122, 4],
+    [110, 1], [101, 3], [95, 2],
+    [80, 3], [72, 4], [66, 3],
+    [50, 1], [44, 2], [38, 3],
+    [25, 4], [18, 3], [12, 2],
+    [1.1, 3], [0.33, 1], [0.21, 3], [0.08, 2],
+  ]
+  const resp = [14, 9, 21, 12, 17, 8, 25, 11, 15, 19, 10, 22, 13, 16, 9, 18, 24, 12, 14, 9, 21, 12]
+  return spec.map(([daysAgo, zoneId], i) => ({
+    id: `AL-${String(i + 1).padStart(3, '0')}`,
+    timestamp: Date.now() - Math.round(daysAgo * DAY),
+    zoneId,
+    swimmerId: `BR-${String(((i * 7) % 12) + 1).padStart(2, '0')}`,
+    responseSec: resp[i],
+    resolved: true,
+  }))
+})()
 
 let alarmSeq = seedAlarms.length
 

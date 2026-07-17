@@ -27,6 +27,40 @@ export const strings = {
       danger: 'Bahaya',
     },
     zone: 'Zona',
+    report: {
+      subtitle:
+        'Rekap alarm, waktu respons, dan zona rawan — riwayat 6 bulan + kejadian live dari Simulasi.',
+      tiles: {
+        today: 'Alarm Hari Ini',
+        total: 'Total Alarm (6 Bln)',
+        avgResponse: 'Rata-rata Respons',
+        fastest: 'Respons Tercepat',
+      },
+      monthlyPanel: 'Alarm per Bulan',
+      heatmapPanel: 'Heatmap Zona Rawan',
+      heatLow: 'Jarang',
+      heatHigh: 'Sering',
+      todayPanel: 'Alarm Hari Ini',
+      todayEmpty: 'Belum ada alarm hari ini.',
+      table: {
+        time: 'Waktu',
+        alarm: 'Alarm',
+        band: 'Gelang',
+        zone: 'Zona',
+        response: 'Respons',
+        status: 'Status',
+      },
+      statusDone: 'Selesai',
+      statusActive: 'AKTIF',
+      recPanel: 'Rekomendasi Personil',
+      recStaff:
+        'Tambah 1 penjaga di {zone} — {count} alarm ({pct}% dari total) dalam 6 bulan terakhir.',
+      recResponseSlow:
+        'Rata-rata waktu respons {avg} dtk — di atas target 15 dtk. Pertimbangkan pos jaga lebih dekat ke zona rawan.',
+      recResponseGood:
+        'Rata-rata waktu respons {avg} dtk — masih dalam target < 15 dtk. Pertahankan.',
+      alarmsUnit: 'alarm',
+    },
     map: {
       subtitle:
         'Pantauan langsung seluruh zona kolam — saat alarm, lokasi korban muncul di sini.',
@@ -143,6 +177,40 @@ export const strings = {
       danger: 'Danger',
     },
     zone: 'Zone',
+    report: {
+      subtitle:
+        'Alarm recap, response times, and risk zones — 6 months of history plus live events from the Simulation.',
+      tiles: {
+        today: 'Alarms Today',
+        total: 'Total Alarms (6 Mo)',
+        avgResponse: 'Avg Response',
+        fastest: 'Fastest Response',
+      },
+      monthlyPanel: 'Alarms per Month',
+      heatmapPanel: 'Zone Risk Heatmap',
+      heatLow: 'Rare',
+      heatHigh: 'Frequent',
+      todayPanel: 'Alarms Today',
+      todayEmpty: 'No alarms today.',
+      table: {
+        time: 'Time',
+        alarm: 'Alarm',
+        band: 'Wristband',
+        zone: 'Zone',
+        response: 'Response',
+        status: 'Status',
+      },
+      statusDone: 'Resolved',
+      statusActive: 'ACTIVE',
+      recPanel: 'Staffing Recommendation',
+      recStaff:
+        'Add 1 lifeguard to {zone} — {count} alarms ({pct}% of total) in the last 6 months.',
+      recResponseSlow:
+        'Average response time is {avg}s — above the 15s target. Consider a guard post closer to the risk zone.',
+      recResponseGood:
+        'Average response time is {avg}s — within the < 15s target. Keep it up.',
+      alarmsUnit: 'alarms',
+    },
     map: {
       subtitle:
         'Live view of every pool zone — when an alarm fires, the victim’s location appears here.',
