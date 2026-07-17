@@ -4,15 +4,13 @@ import { Panel } from '../components/ui/Panel'
 import { StatusPill } from '../components/ui/StatusPill'
 import { StatTile } from '../components/ui/StatTile'
 import { ZONE_RECTS } from '../lib/pool'
+import { fmt } from '../lib/fmt'
 
 /**
  * M4 — Report: tabel alarm hari ini, grafik bulanan, statistik respons,
  * heatmap zona rawan, rekomendasi personil. Membaca shared state —
  * alarm baru dari Simulasi langsung masuk sini.
  */
-
-/** Interpolasi template kamus: fmt('{zone} rawan', { zone: 'Zona 3' }) */
-const fmt = (s, vars) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k]))
 
 const isSameDay = (ts, ref = new Date()) => {
   const d = new Date(ts)

@@ -135,6 +135,19 @@ function PoolView({ swimmers, activeAlarms, S, t, areaRef, handlers }) {
         }}
       />
 
+      {/* Hint saat kolam kosong (semua perenang di deck) */}
+      {swimmers.every((s) => s.zoneId == null) && (
+        <p
+          className="pointer-events-none absolute w-max max-w-[60%] -translate-x-1/2 -translate-y-1/2 text-center text-xs text-muted"
+          style={{
+            left: `${(POOL_RECT.x1 + POOL_RECT.x2) / 2}%`,
+            top: `${(POOL_RECT.y1 + POOL_RECT.y2) / 2}%`,
+          }}
+        >
+          {S.emptyPool}
+        </p>
+      )}
+
       {/* Karakter perenang */}
       {swimmers.map((s) => (
         <SwimmerToken
@@ -188,8 +201,10 @@ function SwimmerList({ swimmers, activeAlarms, S, t, onTrigger, onRescue }) {
                 {STATUS_EMOJI[s.status]} {s.id}
               </div>
               <div className="num mt-0.5 text-xs text-muted">
-                {s.zoneId ? `${t.zone} ${s.zoneId}` : S.swimmerStatus.idle} · 🔋
-                {s.battery}%
+                {s.zoneId ? `${t.zone} ${s.zoneId}` : S.swimmerStatus.idle} ·{' '}
+                <span className={s.battery < 25 ? 'font-semibold text-danger' : ''}>
+                  🔋{s.battery}%
+                </span>
                 {s.status === 'drowning' &&
                   ` · ${S.submersion} ${s.submersionSec}${S.sec}`}
               </div>
@@ -312,7 +327,11 @@ export function SimulationPage() {
           <Panel
             title={S.swimmersPanel}
             actions={
-              <Button variant="ghost" onClick={addSwimmer}>
+              <Button
+                variant="ghost"
+                onClick={addSwimmer}
+                disabled={swimmers.length >= 6}
+              >
                 {S.addSwimmer}
               </Button>
             }

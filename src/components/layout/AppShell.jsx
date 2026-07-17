@@ -31,7 +31,7 @@ function NavTabs({ page, onNavigate }) {
   return (
     <nav
       className="flex items-center gap-1 whitespace-nowrap"
-      aria-label="Navigasi utama"
+      aria-label={t.navLabel}
     >
       {NAV_IDS.map((id) => {
         const active = page === id
@@ -57,7 +57,7 @@ function NavTabs({ page, onNavigate }) {
 
 function Topbar({ page, onNavigate }) {
   const { lang, setLang, t } = useLang()
-  const { muted, toggleMute } = useAppState()
+  const { muted, toggleMute, hasActiveAlarm } = useAppState()
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
@@ -82,6 +82,9 @@ function Topbar({ page, onNavigate }) {
               label={muted ? t.unmuteAlarm : t.muteAlarm}
               active={muted}
               onClick={toggleMute}
+              className={
+                muted && hasActiveAlarm ? 'border-danger! text-danger!' : ''
+              }
             >
               {muted ? (
                 <VolumeMutedIcon className="h-4 w-4" />

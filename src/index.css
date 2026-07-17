@@ -110,7 +110,9 @@ body {
   animation: sink 2s ease-in-out infinite;
 }
 
-/* Kedip merah untuk zona/banner/karakter saat ALARM aktif */
+/* Kedip merah untuk zona/banner/karakter saat ALARM aktif.
+   Background dasar tetap merah supaya status terbaca walau animasi
+   dimatikan (prefers-reduced-motion). */
 @keyframes alarm-blink {
   0%,
   100% {
@@ -121,7 +123,44 @@ body {
   }
 }
 .alarm-blink {
+  background-color: rgba(239, 68, 68, 0.28);
   animation: alarm-blink 0.9s steps(1) infinite;
+}
+
+/* Fade halus saat pindah halaman */
+@keyframes page-fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.page-fade {
+  animation: page-fade 0.25s ease-out;
+}
+
+/* Toast masuk dari kanan */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+.toast-in {
+  animation: toast-in 0.2s ease-out;
+}
+
+/* Hormati preferensi kurangi gerakan — status tetap terbaca dari warna dasar */
+@media (prefers-reduced-motion: reduce) {
+  .anim-bob,
+  .anim-shake,
+  .anim-sink,
+  .alarm-blink,
+  .shiny-text,
+  .hero-bg-anim,
+  .page-fade,
+  .toast-in {
+    animation: none;
+  }
 }
 
 /* Fallback background hero kalau video /hero.mp4 tidak ada: gradasi biru bergerak pelan */

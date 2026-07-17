@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AppShell } from './components/layout/AppShell'
+import { ToastHost } from './components/ToastHost'
 import { LandingPage } from './pages/LandingPage'
 import { MapPage } from './pages/MapPage'
 import { SimulationPage } from './pages/SimulationPage'
@@ -17,8 +18,14 @@ export default function App() {
   const Page = PAGES[page]
 
   return (
-    <AppShell page={page} onNavigate={setPage} fullBleed={page === 'landing'}>
-      <Page onNavigate={setPage} />
-    </AppShell>
+    <>
+      <AppShell page={page} onNavigate={setPage} fullBleed={page === 'landing'}>
+        {/* key={page} → animasi fade halus tiap pindah halaman */}
+        <div key={page} className="page-fade">
+          <Page onNavigate={setPage} />
+        </div>
+      </AppShell>
+      <ToastHost onNavigate={setPage} />
+    </>
   )
 }
