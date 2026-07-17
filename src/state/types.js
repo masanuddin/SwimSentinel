@@ -10,6 +10,8 @@
  * @property {SwimmerStatus} status
  * @property {number} submersionSec - detik terendam (0 kalau tidak)
  * @property {number} battery       - persen baterai gelang 0..100
+ * @property {{x:number,y:number}} pos - posisi di area simulasi (% 0..100),
+ *                                    dipakai UI Simulasi (lihat src/lib/pool.js)
  *
  * @typedef {Object} Zone
  * @property {number} id            - 1..4
