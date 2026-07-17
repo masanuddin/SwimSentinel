@@ -78,7 +78,7 @@ function Topbar({ page, onNavigate }) {
   const { muted, toggleMute } = useAppState()
 
   return (
-    <header className="sticky top-0 z-10 border-b border-border bg-bg/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1600px] items-center justify-between gap-6 px-6">
         <Brand />
         <NavTabs page={page} onNavigate={onNavigate} />
