@@ -1,5 +1,5 @@
 /**
- * Ikon inline SVG (stroke, 24x24 viewBox) — tanpa library eksternal.
+ * Ikon inline SVG (stroke, 24x24 viewBox) tanpa library eksternal.
  * Pakai: <HomeIcon className="h-4 w-4" />
  */
 

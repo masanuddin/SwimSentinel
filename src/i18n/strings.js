@@ -1,5 +1,5 @@
 /**
- * Kamus string ID/EN. SEMUA teks UI lewat sini — jangan hardcode kalimat
+ * Kamus string ID/EN. SEMUA teks UI lewat sini jangan hardcode kalimat
  * di komponen. Tambah key baru di KEDUA bahasa sekaligus.
  */
 export const strings = {
@@ -33,15 +33,15 @@ export const strings = {
         close: 'Tutup',
         loading: 'Memproses…',
         checkEmail:
-          'Pendaftaran berhasil — cek email Anda untuk konfirmasi, lalu login.',
+          'Pendaftaran berhasil cek email Anda untuk konfirmasi, lalu login.',
         notConfigured:
-          'Supabase belum dikonfigurasi — isi .env.local terlebih dahulu.',
+          'Supabase belum dikonfigurasi isi .env.local terlebih dahulu.',
       },
     },
     toast: {
-      struggling: '{id} terdeteksi meronta — {zone}',
-      alarm: 'ALARM — {zone} — {id}',
-      resolved: '{id} diselamatkan — respons {sec} dtk',
+      struggling: '{id} terdeteksi meronta {zone}',
+      alarm: 'ALARM {zone} {id}',
+      resolved: '{id} diselamatkan respons {sec} dtk',
       openDashboard: 'Lihat Dashboard',
     },
     nav: {
@@ -64,7 +64,7 @@ export const strings = {
     zone: 'Zona',
     report: {
       subtitle:
-        'Rekap alarm, waktu respons, dan zona rawan — riwayat 6 bulan + kejadian live dari Simulasi.',
+        'Rekap alarm, waktu respons, dan zona rawan riwayat 6 bulan + kejadian live dari Simulasi.',
       tiles: {
         today: 'Alarm Hari Ini',
         total: 'Total Alarm (6 Bln)',
@@ -89,17 +89,17 @@ export const strings = {
       statusActive: 'AKTIF',
       recPanel: 'Rekomendasi Personil',
       recStaff:
-        'Tambah 1 penjaga di {zone} — {count} alarm ({pct}% dari total) dalam 6 bulan terakhir.',
+        'Tambah 1 penjaga di {zone} {count} alarm ({pct}% dari total) dalam 6 bulan terakhir.',
       recResponseSlow:
-        'Rata-rata waktu respons {avg} dtk — di atas target 15 dtk. Pertimbangkan pos jaga lebih dekat ke zona rawan.',
+        'Rata-rata waktu respons {avg} dtk di atas target 15 dtk. Pertimbangkan pos jaga lebih dekat ke zona rawan.',
       recResponseGood:
-        'Rata-rata waktu respons {avg} dtk — masih dalam target < 15 dtk. Pertahankan.',
+        'Rata-rata waktu respons {avg} dtk masih dalam target < 15 dtk. Pertahankan.',
       alarmsUnit: 'alarm',
     },
     map: {
       subtitle:
-        'Pantauan langsung seluruh zona kolam — saat alarm, lokasi korban muncul di sini.',
-      mapPanel: 'Peta Kolam — Live',
+        'Pantauan langsung seluruh zona kolam saat alarm, lokasi korban muncul di sini.',
+      mapPanel: 'Peta Kolam Live',
       zonesPanel: 'Status Zona',
       alarmsPanel: 'Alarm Aktif',
       respond: 'Tanggapi',
@@ -116,13 +116,13 @@ export const strings = {
     sim: {
       subtitle:
         'Drag karakter untuk memindahkan (deck ↔ kolam), klik karakter di air untuk memicu skenario tenggelam.',
-      poolPanel: 'Kolam — Tampak Atas',
+      poolPanel: 'Kolam Tampak Atas',
       deck: 'DECK',
       instructionsTitle: 'Cara Pakai',
       instructions: [
-        'Drag karakter ke deck atau zona kolam — posisinya menentukan zona yang tampil di Map.',
+        'Drag karakter ke deck atau zona kolam posisinya menentukan zona yang tampil di Map.',
         'Klik karakter yang sedang berenang untuk memicu skenario tenggelam.',
-        'Sistem mengonfirmasi 6 detik sebelum alarm — tekan Selamatkan untuk membatalkan.',
+        'Sistem mengonfirmasi 6 detik sebelum alarm tekan Selamatkan untuk membatalkan.',
       ],
       swimmersPanel: 'Perenang',
       addSwimmer: '+ Tambah',
@@ -146,16 +146,16 @@ export const strings = {
       heroLine1: 'Deteksi Tenggelam.',
       heroLine2: 'Sebelum Terlambat.',
       heroLead:
-        'SwimSentinel memadukan gelang sensor gyro dan kamera bawah air untuk menangkap tanda tenggelam yang senyap — lalu membunyikan alarm dan menunjukkan lokasi korban ke lifeguard dalam hitungan detik.',
+        'SwimSentinel memadukan gelang sensor gyro dan kamera bawah air untuk menangkap tanda tenggelam yang senyap lalu membunyikan alarm dan menunjukkan lokasi korban ke lifeguard dalam hitungan detik.',
       heroStat: '±236.000',
-      heroStatCaption: 'jiwa melayang akibat tenggelam setiap tahun di dunia — WHO',
+      heroStatCaption: 'jiwa melayang akibat tenggelam setiap tahun di dunia WHO',
       cta: 'Buka Simulasi',
       problemKicker: 'Masalahnya',
       problemHeading: 'Tenggelam tidak terlihat seperti di film',
       problems: [
         {
           title: 'Senyap, bukan teriak',
-          body: 'Instinctive drowning response: korban tidak bisa berteriak atau melambai. Ia diam vertikal 20–60 detik sebelum terendam — mudah luput dari mata.',
+          body: 'Instinctive drowning response: korban tidak bisa berteriak atau melambai. Ia diam vertikal 20–60 detik sebelum terendam mudah luput dari mata.',
         },
         {
           title: 'Terjadi di dekat pengawas',
@@ -171,11 +171,11 @@ export const strings = {
       steps: [
         {
           title: 'Gelang mendeteksi meronta',
-          body: 'Di permukaan, gyro pada gelang membaca gerakan meronta dan langsung mengirim sinyal darurat — sebelum korban terendam.',
+          body: 'Di permukaan, gyro pada gelang membaca gerakan meronta dan langsung mengirim sinyal darurat sebelum korban terendam.',
         },
         {
           title: 'Kamera mengonfirmasi',
-          body: 'Saat gelang terendam, sinyal radio padam di dalam air. Kamera bawah air mengambil alih dan memastikan tubuh diam melewati ambang durasi — bukan sekadar "di air = alarm".',
+          body: 'Saat gelang terendam, sinyal radio padam di dalam air. Kamera bawah air mengambil alih dan memastikan tubuh diam melewati ambang durasi bukan sekadar "di air = alarm".',
         },
         {
           title: 'Alarm + lokasi presisi',
@@ -183,10 +183,10 @@ export const strings = {
         },
       ],
       fusionNote:
-        '"Sinyal radio memang lemah di dalam air — karena itu gelang bekerja di fase meronta di permukaan, lalu kamera bawah air mengonfirmasi saat korban sudah terendam."',
+        '"Sinyal radio memang lemah di dalam air karena itu gelang bekerja di fase meronta di permukaan, lalu kamera bawah air mengonfirmasi saat korban sudah terendam."',
       finalHeading: 'Lihat sistemnya bekerja',
       finalBody:
-        'Picu skenario tenggelam di halaman Simulasi: alarm berbunyi, zona menyala merah di Map, dan insiden tercatat di Report — semuanya live.',
+        'Picu skenario tenggelam di halaman Simulasi: alarm berbunyi, zona menyala merah di Map, dan insiden tercatat di Report semuanya live.',
     },
   },
   en: {
@@ -217,15 +217,15 @@ export const strings = {
         close: 'Close',
         loading: 'Processing…',
         checkEmail:
-          'Registration successful — check your email to confirm, then log in.',
+          'Registration successful check your email to confirm, then log in.',
         notConfigured:
-          'Supabase is not configured — fill in .env.local first.',
+          'Supabase is not configured fill in .env.local first.',
       },
     },
     toast: {
-      struggling: '{id} struggling detected — {zone}',
-      alarm: 'ALARM — {zone} — {id}',
-      resolved: '{id} rescued — {sec}s response',
+      struggling: '{id} struggling detected {zone}',
+      alarm: 'ALARM {zone} {id}',
+      resolved: '{id} rescued {sec}s response',
       openDashboard: 'View Dashboard',
     },
     nav: {
@@ -248,7 +248,7 @@ export const strings = {
     zone: 'Zone',
     report: {
       subtitle:
-        'Alarm recap, response times, and risk zones — 6 months of history plus live events from the Simulation.',
+        'Alarm recap, response times, and risk zones 6 months of history plus live events from the Simulation.',
       tiles: {
         today: 'Alarms Today',
         total: 'Total Alarms (6 Mo)',
@@ -273,17 +273,17 @@ export const strings = {
       statusActive: 'ACTIVE',
       recPanel: 'Staffing Recommendation',
       recStaff:
-        'Add 1 lifeguard to {zone} — {count} alarms ({pct}% of total) in the last 6 months.',
+        'Add 1 lifeguard to {zone} {count} alarms ({pct}% of total) in the last 6 months.',
       recResponseSlow:
-        'Average response time is {avg}s — above the 15s target. Consider a guard post closer to the risk zone.',
+        'Average response time is {avg}s above the 15s target. Consider a guard post closer to the risk zone.',
       recResponseGood:
-        'Average response time is {avg}s — within the < 15s target. Keep it up.',
+        'Average response time is {avg}s within the < 15s target. Keep it up.',
       alarmsUnit: 'alarms',
     },
     map: {
       subtitle:
-        'Live view of every pool zone — when an alarm fires, the victim’s location appears here.',
-      mapPanel: 'Pool Map — Live',
+        'Live view of every pool zone when an alarm fires, the victim’s location appears here.',
+      mapPanel: 'Pool Map Live',
       zonesPanel: 'Zone Status',
       alarmsPanel: 'Active Alarms',
       respond: 'Respond',
@@ -300,13 +300,13 @@ export const strings = {
     sim: {
       subtitle:
         'Drag a character to move them (deck ↔ pool), click a character in the water to trigger a drowning scenario.',
-      poolPanel: 'Pool — Top View',
+      poolPanel: 'Pool Top View',
       deck: 'DECK',
       instructionsTitle: 'How to Use',
       instructions: [
-        'Drag a character onto the deck or a pool zone — their position sets the zone shown on the Map.',
+        'Drag a character onto the deck or a pool zone their position sets the zone shown on the Map.',
         'Click a swimming character to trigger a drowning scenario.',
-        'The system confirms for 6 seconds before alarming — press Rescue to cancel.',
+        'The system confirms for 6 seconds before alarming press Rescue to cancel.',
       ],
       swimmersPanel: 'Swimmers',
       addSwimmer: '+ Add',
@@ -330,16 +330,16 @@ export const strings = {
       heroLine1: 'Detect Drowning.',
       heroLine2: 'Before It’s Too Late.',
       heroLead:
-        'SwimSentinel fuses a gyro-sensor wristband with an underwater camera to catch the silent signs of drowning — then sounds the alarm and pinpoints the victim for lifeguards within seconds.',
+        'SwimSentinel fuses a gyro-sensor wristband with an underwater camera to catch the silent signs of drowning then sounds the alarm and pinpoints the victim for lifeguards within seconds.',
       heroStat: '±236,000',
-      heroStatCaption: 'lives lost to drowning every year worldwide — WHO',
+      heroStatCaption: 'lives lost to drowning every year worldwide WHO',
       cta: 'Open Simulation',
       problemKicker: 'The Problem',
       problemHeading: 'Drowning doesn’t look like it does in movies',
       problems: [
         {
           title: 'Silent, not screaming',
-          body: 'The instinctive drowning response: victims can’t shout or wave. They stay silently vertical for 20–60 seconds before submerging — easy to miss.',
+          body: 'The instinctive drowning response: victims can’t shout or wave. They stay silently vertical for 20–60 seconds before submerging easy to miss.',
         },
         {
           title: 'It happens near lifeguards',
@@ -355,11 +355,11 @@ export const strings = {
       steps: [
         {
           title: 'Wristband detects struggling',
-          body: 'At the surface, the wristband’s gyro reads struggling motion and fires an emergency signal — before the victim goes under.',
+          body: 'At the surface, the wristband’s gyro reads struggling motion and fires an emergency signal before the victim goes under.',
         },
         {
           title: 'Camera confirms',
-          body: 'Once the wristband submerges, radio signals die underwater. The underwater camera takes over, confirming a motionless body past a duration threshold — not just "in water = alarm".',
+          body: 'Once the wristband submerges, radio signals die underwater. The underwater camera takes over, confirming a motionless body past a duration threshold not just "in water = alarm".',
         },
         {
           title: 'Alarm + precise location',
@@ -367,10 +367,10 @@ export const strings = {
         },
       ],
       fusionNote:
-        '"Radio signals are indeed weak underwater — that’s why the wristband works during the surface struggling phase, and the underwater camera confirms once the victim submerges."',
+        '"Radio signals are indeed weak underwater that’s why the wristband works during the surface struggling phase, and the underwater camera confirms once the victim submerges."',
       finalHeading: 'See the system in action',
       finalBody:
-        'Trigger a drowning scenario on the Simulation page: the alarm sounds, the zone turns red on the Map, and the incident is logged in Reports — all live.',
+        'Trigger a drowning scenario on the Simulation page: the alarm sounds, the zone turns red on the Map, and the incident is logged in Reports all live.',
     },
   },
 }

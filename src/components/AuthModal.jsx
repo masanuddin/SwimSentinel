@@ -6,7 +6,7 @@ import { Button } from './ui/Button'
 import { Field } from './ui/Input'
 
 /**
- * AuthModal — card Login/Register (desain dari wireframes/, diadaptasi ke
+ * AuthModal card Login/Register (desain dari wireframes/, diadaptasi ke
  * dark theme SwimSentinel). Tab di dalam card untuk pindah mode.
  *
  * Auth via Supabase (signInWithPassword / signUp / signInWithOAuth google).

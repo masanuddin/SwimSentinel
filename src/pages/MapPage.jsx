@@ -13,7 +13,7 @@ import {
 } from '../lib/pool'
 
 /**
- * M3 — Map (pos lifeguard). Murni MEMBACA shared state:
+ * M3 Map (pos lifeguard). Murni MEMBACA shared state:
  * status zona live, posisi perenang, kartu korban saat alarm + "Tanggapi".
  * Geometri kolam sama persis dengan Simulasi (src/lib/pool.js).
  */

@@ -7,7 +7,7 @@ import { ZONE_RECTS } from '../lib/pool'
 import { fmt } from '../lib/fmt'
 
 /**
- * M4 — Report: tabel alarm hari ini, grafik bulanan, statistik respons,
+ * M4 Report: tabel alarm hari ini, grafik bulanan, statistik respons,
  * heatmap zona rawan, rekomendasi personil. Membaca shared state —
  * alarm baru dari Simulasi langsung masuk sini.
  */

@@ -1,5 +1,5 @@
 /**
- * Field — label + input teks gaya form gelap.
+ * Field label + input teks gaya form gelap.
  * Pakai: <Field label="Email" name="email" type="email" required />
  * error: true → border merah (pesan error dirender terpisah oleh form).
  */

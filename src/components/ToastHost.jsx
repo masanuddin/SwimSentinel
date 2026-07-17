@@ -4,7 +4,7 @@ import { useAppState } from '../state/AppState'
 import { fmt } from '../lib/fmt'
 
 /**
- * M5 — Toast notifikasi global. Mengamati shared state (bukan dipanggil
+ * M5 Toast notifikasi global. Mengamati shared state (bukan dipanggil
  * manual): meronta terdeteksi (warn), alarm menyala (danger, ada tombol
  * "Lihat Map"), alarm ditanggapi (safe). Auto-hilang 6 dtk, bisa ditutup.
  */

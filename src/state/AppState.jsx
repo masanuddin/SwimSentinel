@@ -16,7 +16,7 @@ import { supabase } from '../lib/supabase'
  * Tipe: lihat src/state/types.js
  *
  * Mesin urutan tenggelam (timer) sengaja hidup DI SINI, bukan di halaman
- * Simulasi — supaya urutan tetap berjalan & buzzer tetap bunyi walau user
+ * Simulasi supaya urutan tetap berjalan & buzzer tetap bunyi walau user
  * pindah tab ke Map/Report di tengah skenario.
  */
 
@@ -47,7 +47,7 @@ const HOUR = 60 * 60 * 1000
 const DAY = 24 * HOUR
 
 /**
- * Riwayat alarm mock ±6 bulan (resolved) — bahan grafik bulanan, heatmap
+ * Riwayat alarm mock ±6 bulan (resolved) bahan grafik bulanan, heatmap
  * zona & statistik respons di Report. Zona 3 sengaja paling sering supaya
  * rekomendasi personil muncul dari data. 3 entri terakhir = hari ini.
  */
@@ -81,7 +81,7 @@ export function AppStateProvider({ children }) {
   const [swimmers, setSwimmers] = useState(seedSwimmers)
   const [alarms, setAlarms] = useState(seedAlarms)
   const [muted, setMuted] = useState(false)
-  // Auth — diisi session Supabase (atau mock kalau env belum diisi).
+  // Auth diisi session Supabase (atau mock kalau env belum diisi).
   // Bentuk yang dipakai UI: { email, name? } | null
   const [user, setUser] = useState(null)
 

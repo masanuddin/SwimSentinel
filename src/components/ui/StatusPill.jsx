@@ -15,7 +15,7 @@ const dotStyles = {
 }
 
 /**
- * StatusPill — badge status keselamatan.
+ * StatusPill badge status keselamatan.
  * level: 'safe' | 'warn' | 'danger' | 'muted' (netral, mis. di deck)
  * label opsional; default pakai kamus i18n (Aman/Waspada/Bahaya) —
  * level 'muted' tidak punya default, selalu kasih label.

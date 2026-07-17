@@ -13,9 +13,9 @@ import {
 } from '../lib/pool'
 
 /**
- * M2 — Simulasi (jantung demo).
+ * M2 Simulasi (jantung demo).
  * Mekanik: DRAG = pindahkan posisi (deck ↔ zona), KLIK = picu tenggelam.
- * Urutan & buzzer dijalankan mesin di AppState — tetap hidup saat pindah tab.
+ * Urutan & buzzer dijalankan mesin di AppState tetap hidup saat pindah tab.
  */
 
 const STATUS_LEVEL = {
@@ -170,7 +170,7 @@ function AlarmBanner({ alarm, swimmers, S, t, onRescue }) {
     <div className="alarm-blink flex flex-wrap items-center justify-between gap-3 rounded-md border border-danger px-4 py-3">
       <div className="flex items-center gap-2.5 text-sm font-bold text-text">
         <span className="text-base">🚨</span>
-        {S.alarm} — {t.zone} {alarm.zoneId} — {alarm.swimmerId}
+        {S.alarm} {t.zone} {alarm.zoneId} {alarm.swimmerId}
         {sw && (
           <span className="num font-semibold text-danger">
             {S.submersion} {sw.submersionSec}

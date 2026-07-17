@@ -5,11 +5,11 @@ import { ShinyText } from '../components/ui/ShinyText'
 import { ArrowRightIcon } from '../components/ui/Icons'
 
 /**
- * M1 — Landing: hero full-screen (video + shiny heading), blok masalah,
+ * M1 Landing: hero full-screen (video + shiny heading), blok masalah,
  * cara kerja (sensor fusion), CTA "Buka Simulasi".
  * Simulasi butuh login → CTA membuka modal login saat belum ada session;
  * setelah login, guard di App langsung mengarahkan ke area ber-login.
- * Video hero: public/hero.mp4 — kalau file tidak ada, fallback ke
+ * Video hero: public/hero.mp4 kalau file tidak ada, fallback ke
  * gradasi animasi (.hero-bg-anim), layout tetap aman.
  */
 

@@ -1,5 +1,5 @@
 /**
- * StatTile — angka besar + label kecil, gaya ops dashboard.
+ * StatTile angka besar + label kecil, gaya ops dashboard.
  * danger: tile ikut berkedip merah saat value > 0 (mis. jumlah alarm aktif).
  * suffix: satuan kecil di belakang angka (mis. " dtk").
  */

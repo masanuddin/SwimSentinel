@@ -8,7 +8,7 @@ import { VolumeIcon, VolumeMutedIcon, UserIcon } from '../ui/Icons'
 /**
  * Tab navigasi untuk user yang SUDAH login. Saat belum login, navbar
  * tidak menampilkan tab sama sekali (landing diakses via logo).
- * "Beranda" sengaja tidak ada — user login langsung diarahkan ke Map.
+ * "Beranda" sengaja tidak ada user login langsung diarahkan ke Map.
  */
 const AUTH_NAV_IDS = ['dashboard', 'simulation', 'report']
 
@@ -64,9 +64,9 @@ function NavTabs({ page, onNavigate }) {
 }
 
 /**
- * ProfileMenu — avatar bulat + dropdown akun.
+ * ProfileMenu avatar bulat + dropdown akun.
  * Belum login: Masuk/Login, Daftar/Register. Sudah login: Dashboard, Keluar.
- * Aksi Login/Register/Dashboard masih stub — di-wire saat integrasi Supabase.
+ * Aksi Login/Register/Dashboard masih stub di-wire saat integrasi Supabase.
  */
 function ProfileMenu({ onOpenAuth, onNavigate }) {
   const { t } = useLang()

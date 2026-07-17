@@ -24,7 +24,7 @@ export function Toggle({ checked, onChange, label, className = '' }) {
 }
 
 /**
- * SegmentedToggle — pilihan 2+ opsi (dipakai toggle bahasa ID/EN).
+ * SegmentedToggle pilihan 2+ opsi (dipakai toggle bahasa ID/EN).
  * options: [{ value, label }], value aktif, onChange(value)
  */
 export function SegmentedToggle({ options, value, onChange, label, className = '' }) {

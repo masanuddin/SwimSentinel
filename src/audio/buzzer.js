@@ -1,5 +1,5 @@
 /**
- * Buzzer alarm via Web Audio API — tanpa file audio eksternal.
+ * Buzzer alarm via Web Audio API tanpa file audio eksternal.
  * Sirine dua nada (880/620 Hz square wave) yang bergantian cepat.
  *
  * Kebijakan autoplay browser: AudioContext hanya boleh bunyi setelah

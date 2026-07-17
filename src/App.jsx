@@ -24,7 +24,7 @@ export default function App() {
   // null = tertutup, 'login' | 'register' = modal auth terbuka di mode itu
   const [authMode, setAuthMode] = useState(null)
 
-  // Guard navigasi — session Supabase (via `user` di AppState) sebagai
+  // Guard navigasi session Supabase (via `user` di AppState) sebagai
   // satu-satunya sumber kebenaran:
   // - belum login + halaman terproteksi → balik ke landing
   // - sudah login + di landing → redirect ke Dashboard (termasuk saat load
