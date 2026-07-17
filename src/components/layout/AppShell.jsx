@@ -113,12 +113,20 @@ function Topbar({ page, onNavigate }) {
 /**
  * AppShell: topbar (brand + nav 4 tab + kontrol) dan area konten.
  * Halaman aktif ditentukan `page` (view-switching, tanpa router).
+ * fullBleed: halaman mengatur lebar/padding sendiri (dipakai Landing
+ * untuk hero video selebar layar).
  */
-export function AppShell({ page, onNavigate, children }) {
+export function AppShell({ page, onNavigate, fullBleed = false, children }) {
   return (
     <div className="flex min-h-full flex-col bg-bg">
       <Topbar page={page} onNavigate={onNavigate} />
-      <main className="mx-auto w-full max-w-[1600px] flex-1 px-6 py-6">
+      <main
+        className={
+          fullBleed
+            ? 'flex-1'
+            : 'mx-auto w-full max-w-[1600px] flex-1 px-6 py-6'
+        }
+      >
         {children}
       </main>
     </div>

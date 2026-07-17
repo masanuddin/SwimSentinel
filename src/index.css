@@ -39,6 +39,48 @@ body {
   font-variant-numeric: tabular-nums;
 }
 
+/*
+ * ShinyText: gradient #64CEFB dengan kilau putih menyapu kiri→kanan,
+ * 3 dtk, sudut 100°. Dipakai komponen src/components/ui/ShinyText.jsx
+ */
+.shiny-text {
+  background: linear-gradient(
+    100deg,
+    #64cefb 40%,
+    #ffffff 50%,
+    #64cefb 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Fallback background hero kalau video /hero.mp4 tidak ada: gradasi biru bergerak pelan */
+.hero-bg-anim {
+  background: linear-gradient(120deg, #0a1626, #0f2a52, #123b7a, #0a1626);
+  background-size: 300% 300%;
+  animation: hero-drift 16s ease-in-out infinite;
+}
+@keyframes hero-drift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 @keyframes pulse-dot {
   0%,
   100% {

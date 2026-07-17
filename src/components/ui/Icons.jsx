@@ -62,6 +62,15 @@ export function ChartIcon(props) {
   )
 }
 
+export function ArrowRightIcon(props) {
+  return (
+    <Svg {...props}>
+      <path d="M4 12h16" />
+      <path d="m13 5 7 7-7 7" />
+    </Svg>
+  )
+}
+
 export function VolumeIcon(props) {
   return (
     <Svg {...props}>

@@ -17,7 +17,7 @@ export default function App() {
   const Page = PAGES[page]
 
   return (
-    <AppShell page={page} onNavigate={setPage}>
+    <AppShell page={page} onNavigate={setPage} fullBleed={page === 'landing'}>
       <Page onNavigate={setPage} />
     </AppShell>
   )
