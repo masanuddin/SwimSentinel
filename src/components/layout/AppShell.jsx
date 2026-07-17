@@ -61,7 +61,7 @@ function NavTabs({ page, onNavigate }) {
  * Belum login: Masuk/Login, Daftar/Register. Sudah login: Dashboard, Keluar.
  * Aksi Login/Register/Dashboard masih stub — di-wire saat integrasi Supabase.
  */
-function ProfileMenu() {
+function ProfileMenu({ onOpenAuth }) {
   const { t } = useLang()
   const { user, setUser } = useAppState()
   const [open, setOpen] = useState(false)
@@ -89,8 +89,8 @@ function ProfileMenu() {
         { key: 'logout', label: t.auth.logout, onClick: () => setUser(null), danger: true },
       ]
     : [
-        { key: 'login', label: t.auth.login, onClick: () => {} },
-        { key: 'register', label: t.auth.register, onClick: () => {} },
+        { key: 'login', label: t.auth.login, onClick: () => onOpenAuth('login') },
+        { key: 'register', label: t.auth.register, onClick: () => onOpenAuth('register') },
       ]
 
   return (
@@ -148,7 +148,7 @@ function ProfileMenu() {
   )
 }
 
-function Topbar({ page, onNavigate }) {
+function Topbar({ page, onNavigate, onOpenAuth }) {
   const { lang, setLang, t } = useLang()
   const { muted, toggleMute, hasActiveAlarm } = useAppState()
 
@@ -188,7 +188,7 @@ function Topbar({ page, onNavigate }) {
                 <VolumeIcon className="h-4 w-4" />
               )}
             </IconButton>
-            <ProfileMenu />
+            <ProfileMenu onOpenAuth={onOpenAuth} />
           </div>
         </div>
         {/* Nav baris kedua di mobile/tablet: scroll horizontal kalau sempit */}
@@ -205,11 +205,12 @@ function Topbar({ page, onNavigate }) {
  * Halaman aktif ditentukan `page` (view-switching, tanpa router).
  * fullBleed: halaman mengatur lebar/padding sendiri (dipakai Landing
  * untuk hero video selebar layar).
+ * onOpenAuth('login'|'register'): buka modal auth (dipicu ProfileMenu).
  */
-export function AppShell({ page, onNavigate, fullBleed = false, children }) {
+export function AppShell({ page, onNavigate, onOpenAuth, fullBleed = false, children }) {
   return (
     <div className="flex min-h-full flex-col bg-bg">
-      <Topbar page={page} onNavigate={onNavigate} />
+      <Topbar page={page} onNavigate={onNavigate} onOpenAuth={onOpenAuth} />
       <main
         className={
           fullBleed
