@@ -16,7 +16,7 @@ export function LangProvider({ children }) {
 
 /**
  * useLang() → { lang: 'id'|'en', setLang, t }
- * `t` = kamus bahasa aktif, contoh: t.nav.map, t.status.safe
+ * `t` = kamus bahasa aktif, contoh: t.nav.dashboard, t.status.safe
  */
 export function useLang() {
   const ctx = useContext(LangContext)

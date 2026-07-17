@@ -1,4 +1,5 @@
 import { useLang } from '../i18n/LangContext'
+import { useAppState } from '../state/AppState'
 import { Panel } from '../components/ui/Panel'
 import { ShinyText } from '../components/ui/ShinyText'
 import { ArrowRightIcon } from '../components/ui/Icons'
@@ -6,15 +7,17 @@ import { ArrowRightIcon } from '../components/ui/Icons'
 /**
  * M1 — Landing: hero full-screen (video + shiny heading), blok masalah,
  * cara kerja (sensor fusion), CTA "Buka Simulasi".
+ * Simulasi butuh login → CTA membuka modal login saat belum ada session;
+ * setelah login, guard di App langsung mengarahkan ke area ber-login.
  * Video hero: public/hero.mp4 — kalau file tidak ada, fallback ke
  * gradasi animasi (.hero-bg-anim), layout tetap aman.
  */
 
-function CtaButton({ onNavigate, children, className = '' }) {
+function CtaButton({ onClick, children, className = '' }) {
   return (
     <button
       type="button"
-      onClick={() => onNavigate('simulation')}
+      onClick={onClick}
       className={`group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent/85 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:px-8 md:py-4 md:text-base ${className}`}
     >
       {children}
@@ -23,7 +26,7 @@ function CtaButton({ onNavigate, children, className = '' }) {
   )
 }
 
-function Hero({ L, onNavigate }) {
+function Hero({ L, onCta }) {
   return (
     <section className="relative flex h-[calc(100svh-6.5rem)] min-h-[540px] flex-col overflow-hidden lg:h-[calc(100vh-4rem)]">
       {/* Lapisan background: fallback animasi → video → overlay gelap */}
@@ -65,7 +68,7 @@ function Hero({ L, onNavigate }) {
             <ShinyText className="block pb-2">{L.heroLine2}</ShinyText>
           </h1>
           <div className="mt-10">
-            <CtaButton onNavigate={onNavigate}>{L.cta}</CtaButton>
+            <CtaButton onClick={onCta}>{L.cta}</CtaButton>
           </div>
         </div>
       </div>
@@ -128,7 +131,7 @@ function HowItWorksSection({ L }) {
   )
 }
 
-function FinalCtaSection({ L, onNavigate }) {
+function FinalCtaSection({ L, onCta }) {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 pb-16 pt-4 md:px-6 md:pb-20 lg:px-8">
       <div className="rounded-md border border-border bg-panel px-6 py-12 text-center md:py-16">
@@ -139,23 +142,28 @@ function FinalCtaSection({ L, onNavigate }) {
           {L.finalBody}
         </p>
         <div className="mt-8 flex justify-center">
-          <CtaButton onNavigate={onNavigate}>{L.cta}</CtaButton>
+          <CtaButton onClick={onCta}>{L.cta}</CtaButton>
         </div>
       </div>
     </section>
   )
 }
 
-export function LandingPage({ onNavigate }) {
+export function LandingPage({ onNavigate, onOpenAuth }) {
   const { t } = useLang()
+  const { user } = useAppState()
   const L = t.landing
+
+  // Simulasi terproteksi: belum login → buka modal login dulu
+  const handleCta = () =>
+    user ? onNavigate('simulation') : onOpenAuth('login')
 
   return (
     <div>
-      <Hero L={L} onNavigate={onNavigate} />
+      <Hero L={L} onCta={handleCta} />
       <ProblemSection L={L} />
       <HowItWorksSection L={L} />
-      <FinalCtaSection L={L} onNavigate={onNavigate} />
+      <FinalCtaSection L={L} onCta={handleCta} />
     </div>
   )
 }

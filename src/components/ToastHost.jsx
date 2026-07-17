@@ -45,7 +45,7 @@ export function ToastHost({ onNavigate }) {
           kind: 'danger',
           icon: '🚨',
           text: fmt(t.toast.alarm, { zone: `${t.zone} ${a.zoneId}`, id: a.swimmerId }),
-          action: 'map',
+          action: 'dashboard',
         })
       } else if (old && !old.resolved && a.resolved) {
         push({
@@ -85,16 +85,16 @@ export function ToastHost({ onNavigate }) {
         >
           <span>{icon}</span>
           <span className="min-w-0 flex-1">{text}</span>
-          {action === 'map' && (
+          {action === 'dashboard' && (
             <button
               type="button"
               onClick={() => {
-                onNavigate('map')
+                onNavigate('dashboard')
                 dismiss(id)
               }}
               className="shrink-0 rounded border border-border px-2 py-1 text-xs text-muted transition-colors hover:border-accent/60 hover:text-text"
             >
-              {t.toast.openMap}
+              {t.toast.openDashboard}
             </button>
           )}
           <button

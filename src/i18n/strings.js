@@ -5,7 +5,6 @@
 export const strings = {
   id: {
     appName: 'SwimSentinel',
-    appTagline: 'Pool Safety Monitoring',
     muteAlarm: 'Bisukan alarm',
     unmuteAlarm: 'Bunyikan alarm',
     navLabel: 'Navigasi utama',
@@ -43,17 +42,17 @@ export const strings = {
       struggling: '{id} terdeteksi meronta — {zone}',
       alarm: 'ALARM — {zone} — {id}',
       resolved: '{id} diselamatkan — respons {sec} dtk',
-      openMap: 'Lihat Map',
+      openDashboard: 'Lihat Dashboard',
     },
     nav: {
       landing: 'Beranda',
-      map: 'Map',
+      dashboard: 'Dashboard',
       simulation: 'Simulasi',
       report: 'Report',
     },
     pageTitles: {
       landing: 'Beranda',
-      map: 'Peta Kolam',
+      dashboard: 'Peta Kolam',
       simulation: 'Simulasi',
       report: 'Laporan',
     },
@@ -192,7 +191,6 @@ export const strings = {
   },
   en: {
     appName: 'SwimSentinel',
-    appTagline: 'Pool Safety Monitoring',
     muteAlarm: 'Mute alarm',
     unmuteAlarm: 'Unmute alarm',
     navLabel: 'Main navigation',
@@ -228,17 +226,17 @@ export const strings = {
       struggling: '{id} struggling detected — {zone}',
       alarm: 'ALARM — {zone} — {id}',
       resolved: '{id} rescued — {sec}s response',
-      openMap: 'View Map',
+      openDashboard: 'View Dashboard',
     },
     nav: {
       landing: 'Home',
-      map: 'Map',
+      dashboard: 'Dashboard',
       simulation: 'Simulation',
       report: 'Report',
     },
     pageTitles: {
       landing: 'Home',
-      map: 'Pool Map',
+      dashboard: 'Pool Map',
       simulation: 'Simulation',
       report: 'Report',
     },

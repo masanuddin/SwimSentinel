@@ -3,27 +3,34 @@ import { useLang } from '../../i18n/LangContext'
 import { useAppState } from '../../state/AppState'
 import { IconButton } from '../ui/Button'
 import { SegmentedToggle } from '../ui/Toggle'
-import { WavesIcon, VolumeIcon, VolumeMutedIcon, UserIcon } from '../ui/Icons'
+import { VolumeIcon, VolumeMutedIcon, UserIcon } from '../ui/Icons'
 
-/** ID tab navigasi — dipakai App.jsx sebagai "route". */
-export const NAV_IDS = ['landing', 'map', 'simulation', 'report']
+/**
+ * Tab navigasi untuk user yang SUDAH login. Saat belum login, navbar
+ * tidak menampilkan tab sama sekali (landing diakses via logo).
+ * "Beranda" sengaja tidak ada — user login langsung diarahkan ke Map.
+ */
+const AUTH_NAV_IDS = ['dashboard', 'simulation', 'report']
 
-function Brand() {
+function Brand({ onClick }) {
   const { t } = useLang()
   return (
-    <div className="flex items-center gap-2.5 md:gap-3">
-      <div className="flex h-8 w-8 items-center justify-center rounded-md border border-accent/50 bg-accent/15 text-accent md:h-9 md:w-9">
-        <WavesIcon className="h-4 w-4 md:h-5 md:w-5" />
-      </div>
-      <div className="leading-tight">
-        <div className="text-sm font-bold tracking-wide md:text-base">
-          {t.appName}
-        </div>
-        <div className="hidden text-[11px] font-medium uppercase tracking-widest text-muted sm:block">
-          {t.appTagline}
-        </div>
-      </div>
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex cursor-pointer items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:gap-3"
+    >
+      {/* /logo-nav.png = logo.png yang di-trim padding-nya (via ImageMagick) */}
+      <img
+        src="/logo-nav.png"
+        alt=""
+        className="h-9 w-9 select-none md:h-10 md:w-10"
+        draggable="false"
+      />
+      <span className="text-sm font-bold tracking-wide md:text-base">
+        {t.appName}
+      </span>
+    </button>
   )
 }
 
@@ -34,7 +41,7 @@ function NavTabs({ page, onNavigate }) {
       className="flex items-center gap-1 whitespace-nowrap"
       aria-label={t.navLabel}
     >
-      {NAV_IDS.map((id) => {
+      {AUTH_NAV_IDS.map((id) => {
         const active = page === id
         return (
           <button
@@ -61,7 +68,7 @@ function NavTabs({ page, onNavigate }) {
  * Belum login: Masuk/Login, Daftar/Register. Sudah login: Dashboard, Keluar.
  * Aksi Login/Register/Dashboard masih stub — di-wire saat integrasi Supabase.
  */
-function ProfileMenu({ onOpenAuth }) {
+function ProfileMenu({ onOpenAuth, onNavigate }) {
   const { t } = useLang()
   const { user, logout } = useAppState()
   const [open, setOpen] = useState(false)
@@ -83,15 +90,26 @@ function ProfileMenu({ onOpenAuth }) {
     }
   }, [open])
 
-  const items = user
-    ? [
-        { key: 'dashboard', label: t.auth.dashboard, onClick: () => {} },
-        { key: 'logout', label: t.auth.logout, onClick: logout, danger: true },
-      ]
-    : [
-        { key: 'login', label: t.auth.login, onClick: () => onOpenAuth('login') },
-        { key: 'register', label: t.auth.register, onClick: () => onOpenAuth('register') },
-      ]
+  // Belum login: ikon user = tombol Login langsung (tanpa dropdown).
+  // Register tetap bisa diakses lewat tab di dalam modal.
+  if (!user) {
+    return (
+      <button
+        type="button"
+        aria-label={t.auth.login}
+        title={t.auth.login}
+        onClick={() => onOpenAuth('login')}
+        className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-panel text-muted transition-colors hover:border-accent/60 hover:text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <UserIcon className="h-4 w-4" />
+      </button>
+    )
+  }
+
+  const items = [
+    { key: 'dashboard', label: t.auth.dashboard, onClick: () => onNavigate('dashboard') },
+    { key: 'logout', label: t.auth.logout, onClick: logout, danger: true },
+  ]
 
   return (
     <div ref={rootRef} className="relative">
@@ -150,7 +168,7 @@ function ProfileMenu({ onOpenAuth }) {
 
 function Topbar({ page, onNavigate, onOpenAuth }) {
   const { lang, setLang, t } = useLang()
-  const { muted, toggleMute, hasActiveAlarm } = useAppState()
+  const { muted, toggleMute, hasActiveAlarm, user } = useAppState()
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-bg/95 backdrop-blur">
@@ -158,11 +176,12 @@ function Topbar({ page, onNavigate, onOpenAuth }) {
         {/* Di lg+: grid 3 kolom → nav benar-benar di tengah layar */}
         <div className="flex h-14 items-center justify-between gap-3 md:h-16 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <div className="lg:justify-self-start">
-            <Brand />
+            {/* Logo: belum login → landing; sudah login → Dashboard (landing di-redirect) */}
+            <Brand onClick={() => onNavigate(user ? 'dashboard' : 'landing')} />
           </div>
-          {/* Nav inline hanya di layar besar */}
+          {/* Nav inline hanya di layar besar & hanya saat sudah login */}
           <div className="hidden lg:block lg:justify-self-center">
-            <NavTabs page={page} onNavigate={onNavigate} />
+            {user && <NavTabs page={page} onNavigate={onNavigate} />}
           </div>
           <div className="flex items-center gap-2 md:gap-2.5 lg:justify-self-end">
             <SegmentedToggle
@@ -188,13 +207,15 @@ function Topbar({ page, onNavigate, onOpenAuth }) {
                 <VolumeIcon className="h-4 w-4" />
               )}
             </IconButton>
-            <ProfileMenu onOpenAuth={onOpenAuth} />
+            <ProfileMenu onOpenAuth={onOpenAuth} onNavigate={onNavigate} />
           </div>
         </div>
-        {/* Nav baris kedua di mobile/tablet: scroll horizontal kalau sempit */}
-        <div className="overflow-x-auto pb-2 lg:hidden">
-          <NavTabs page={page} onNavigate={onNavigate} />
-        </div>
+        {/* Nav baris kedua di mobile/tablet (hanya saat sudah login) */}
+        {user && (
+          <div className="overflow-x-auto pb-2 lg:hidden">
+            <NavTabs page={page} onNavigate={onNavigate} />
+          </div>
+        )}
       </div>
     </header>
   )
