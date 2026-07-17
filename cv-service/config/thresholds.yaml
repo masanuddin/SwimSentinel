@@ -1,0 +1,65 @@
+# Runtime engineering thresholds for the CV service.
+# These are rehearsal/demo engineering values, NOT medical thresholds.
+# Tune only from measured behaviour (see cv-service/evaluation/).
+
+detection:
+  input_size: 640
+  device: auto
+  # Frame preprocessing before inference. The training dataset was stretched
+  # to 640x640 (aspect ratio not preserved), so "stretch" matches training and
+  # measurably outperforms "letterbox" on 16:9 sources. Keep "letterbox" only
+  # as an emergency rollback.
+  preprocess: stretch
+  # Detections at/above tracking_confidence keep a track alive (continuity),
+  # but only detections at/above evidence_confidence may escalate a state.
+  tracking_confidence: 0.15
+  evidence_confidence: 0.35
+
+tracking:
+  track_high_thresh: 0.40
+  track_low_thresh: 0.10
+  new_track_thresh: 0.40
+  match_thresh: 0.80
+  # Time-based track-loss is enforced by the state engine (variable FPS safe).
+  # ByteTrack's own track_buffer is derived from this using nominal_fps.
+  track_lost_timeout_ms: 1500
+  nominal_fps: 30
+  # Remove a lost track's context entirely after this long (stale cleanup).
+  track_expiry_ms: 8000
+
+history:
+  window_ms: 5000
+
+motion:
+  # Trailing mean over this window smooths centroid jitter before displacement.
+  smoothing_window_ms: 800
+  # Displacement is measured between smoothed centroids this far apart.
+  displacement_window_ms: 1000
+  # Normalized movement = displacement / bbox diagonal / elapsed seconds.
+  # Below this ratio the track is considered low-motion.
+  low_motion_ratio_per_sec: 0.02
+  # Continuous low motion for this long marks motionState as inactivity-level.
+  inactivity_ms: 3000
+  # Boxes with a smaller diagonal (px) are too small for reliable motion.
+  min_box_diagonal_px: 12
+
+state:
+  watch_min_ms: 300
+  distress_persistence_ms: 1800
+  inactivity_persistence_ms: 3000
+  recovery_ms: 1500
+
+zones:
+  # Anchor used to map a detection to a pool zone.
+  # "centroid" suits an above-water side/diagonal view of swimmers in water;
+  # "lower_center" would suit a ground-plane view of standing people.
+  anchor: centroid
+
+events:
+  heartbeat_ms: 3000
+  mock_event_ms: 1000
+  emit_on_state_change: true
+  # Bounded periodic re-emit for an unchanged track (0 disables).
+  periodic_event_ms: 2000
+  # Never emit for the same track more often than this.
+  min_event_interval_ms: 400

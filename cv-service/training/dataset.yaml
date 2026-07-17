@@ -1,0 +1,28 @@
+# Project-owned training config for the Roboflow "Drowning Detection" dataset
+# (object-detection-model/drowning-detection-wqiom, v1, CC BY 4.0).
+#
+# The raw export under cv-service/data/raw/ is immutable; this file renames the
+# classes to product-facing terms WITHOUT changing the source class IDs:
+#
+#   ID 0: Drowning            -> distress_candidate
+#   ID 1: Person out of water -> out_of_water
+#   ID 2: Swimming            -> normal_swimming
+#
+# "distress_candidate" is deliberate: a detection is visual appearance
+# evidence, not a medical drowning diagnosis.
+#
+# `path` is relative to THIS file. Ultralytics resolves relative paths against
+# its global datasets_dir instead, so train.py/validate.py resolve `path` to an
+# absolute location at runtime before handing it to YOLO. Keep it relative here
+# so the file works on every teammate's machine.
+
+path: ../data/raw/Drowning Detection.v1i.yolov11
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 3
+names:
+  0: distress_candidate
+  1: out_of_water
+  2: normal_swimming

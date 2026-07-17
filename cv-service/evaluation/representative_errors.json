@@ -1,0 +1,183 @@
+{
+  "split": "val",
+  "images_scanned": 500,
+  "conf_threshold": 0.25,
+  "iou_match_threshold": 0.45,
+  "counts": {
+    "false_positive": 206,
+    "false_negative": 112,
+    "class_confusion": 16,
+    "true_positive": 942
+  },
+  "examples": {
+    "false_positive": [
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-10_jpg.rf.c8c1e7f571831bf4a2538d321c2dc7ae.jpg",
+        "ground_truth": "none",
+        "predicted": "normal_swimming",
+        "confidence": 0.627,
+        "iou_with_best_gt": 0.0,
+        "interpretation": "Model predicted normal_swimming where there is no labeled object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-26_jpg.rf.e5bcc217954cf2510b821112ca1483b0.jpg",
+        "ground_truth": "none",
+        "predicted": "normal_swimming",
+        "confidence": 0.481,
+        "iou_with_best_gt": 0.429,
+        "interpretation": "Model predicted normal_swimming where there is no labeled object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-31_jpg.rf.6e01d9c811f56b773eff1f6ea48a81ac.jpg",
+        "ground_truth": "none",
+        "predicted": "distress_candidate",
+        "confidence": 0.821,
+        "iou_with_best_gt": 0.282,
+        "interpretation": "Model predicted distress_candidate where there is no labeled object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-38_jpg.rf.6c52bab24e8a30328c86d423eb533364.jpg",
+        "ground_truth": "none",
+        "predicted": "normal_swimming",
+        "confidence": 0.683,
+        "iou_with_best_gt": 0.406,
+        "interpretation": "Model predicted normal_swimming where there is no labeled object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-38_jpg.rf.6c52bab24e8a30328c86d423eb533364.jpg",
+        "ground_truth": "none",
+        "predicted": "distress_candidate",
+        "confidence": 0.477,
+        "iou_with_best_gt": 0.0,
+        "interpretation": "Model predicted distress_candidate where there is no labeled object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-38_jpg.rf.6c52bab24e8a30328c86d423eb533364.jpg",
+        "ground_truth": "none",
+        "predicted": "normal_swimming",
+        "confidence": 0.263,
+        "iou_with_best_gt": 0.0,
+        "interpretation": "Model predicted normal_swimming where there is no labeled object."
+      }
+    ],
+    "false_negative": [
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-26_jpg.rf.424d547551d5213d2c4cc6f532ca487e.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled distress_candidate object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-26_jpg.rf.e5bcc217954cf2510b821112ca1483b0.jpg",
+        "ground_truth": "normal_swimming",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled normal_swimming object."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-31_jpg.rf.6e01d9c811f56b773eff1f6ea48a81ac.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled distress_candidate object."
+      },
+      {
+        "split": "val",
+        "file": "10415_jpg.rf.0b086c7bf1e5a76e3fde4199f4b0fda4.jpg",
+        "ground_truth": "normal_swimming",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled normal_swimming object."
+      },
+      {
+        "split": "val",
+        "file": "10_jpeg_jpg.rf.22bb636adbfbe79edaa14a7e074010e8.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled distress_candidate object."
+      },
+      {
+        "split": "val",
+        "file": "11569_jpg.rf.563c2c567ace0b8cdd5c8b5ae636c41e.jpg",
+        "ground_truth": "normal_swimming",
+        "predicted": "none",
+        "confidence": null,
+        "iou_with_best_gt": null,
+        "interpretation": "Model missed a labeled normal_swimming object."
+      }
+    ],
+    "class_confusion": [
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-26_jpg.rf.424d547551d5213d2c4cc6f532ca487e.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "normal_swimming",
+        "confidence": 0.758,
+        "iou_with_best_gt": 0.7720305317177304,
+        "interpretation": "Localized correctly but classified normal_swimming instead of distress_candidate."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-26_jpg.rf.e5bcc217954cf2510b821112ca1483b0.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "normal_swimming",
+        "confidence": 0.446,
+        "iou_with_best_gt": 0.8651833253459984,
+        "interpretation": "Localized correctly but classified normal_swimming instead of distress_candidate."
+      },
+      {
+        "split": "val",
+        "file": "-Clipchamp-_mp4-38_jpg.rf.6c52bab24e8a30328c86d423eb533364.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "normal_swimming",
+        "confidence": 0.498,
+        "iou_with_best_gt": 0.7757685151767875,
+        "interpretation": "Localized correctly but classified normal_swimming instead of distress_candidate."
+      },
+      {
+        "split": "val",
+        "file": "10932_jpg.rf.e9e06516365524f9e81388d74b06bf72.jpg",
+        "ground_truth": "normal_swimming",
+        "predicted": "distress_candidate",
+        "confidence": 0.567,
+        "iou_with_best_gt": 0.5454436847631382,
+        "interpretation": "Localized correctly but classified distress_candidate instead of normal_swimming."
+      },
+      {
+        "split": "val",
+        "file": "130279_jpg.rf.60cb50b39e458b4a77710c3a1475c63a.jpg",
+        "ground_truth": "distress_candidate",
+        "predicted": "normal_swimming",
+        "confidence": 0.764,
+        "iou_with_best_gt": 0.9535075655822624,
+        "interpretation": "Localized correctly but classified normal_swimming instead of distress_candidate."
+      },
+      {
+        "split": "val",
+        "file": "130519_jpg.rf.08762b6decfa87d7d390c670c7587de9.jpg",
+        "ground_truth": "normal_swimming",
+        "predicted": "distress_candidate",
+        "confidence": 0.864,
+        "iou_with_best_gt": 0.5667864596413894,
+        "interpretation": "Localized correctly but classified distress_candidate instead of normal_swimming."
+      }
+    ]
+  },
+  "note": "Representative reviewed errors on a capped validation sample; not exhaustive. Confidence/IoU are object-detection quantities, not medical certainty."
+}

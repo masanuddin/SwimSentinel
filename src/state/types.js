@@ -1,5 +1,5 @@
 /**
- * Tipe data shared state (JSDoc). Sesuai CLAUDE.md §7.
+ * Tipe data shared state (JSDoc).
  *
  * @typedef {'idle'|'swimming'|'struggling'|'drowning'|'rescued'} SwimmerStatus
  *

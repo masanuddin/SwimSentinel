@@ -1,0 +1,113 @@
+{
+  "generated_utc": "2026-07-17T07:24:46.655208+00:00",
+  "model": "yolo11s",
+  "checkpoint": "cv-service/runs/yolo11s-main/weights/best.pt",
+  "task": "detection",
+  "classes": [
+    "distress_candidate",
+    "out_of_water",
+    "normal_swimming"
+  ],
+  "training": {
+    "model": "yolo11s.pt",
+    "imgsz": 640,
+    "epochs": 60,
+    "batch": 32,
+    "device": "0",
+    "workers": 8,
+    "seed": 42,
+    "deterministic": true,
+    "amp": true,
+    "optimizer": "auto",
+    "patience": 15,
+    "lr0": 0.01,
+    "momentum": 0.937,
+    "epochs_completed": 60,
+    "best_epoch": 60,
+    "best_epoch_val_map50": 0.8754,
+    "best_epoch_val_map50_95": 0.5453,
+    "final_train_box_loss": 0.9763,
+    "final_val_box_loss": 1.3049,
+    "training_seconds": 1757.8
+  },
+  "dataset": {
+    "total_images": 9984,
+    "total_objects": 18578,
+    "object_counts_by_class": {
+      "Drowning": 10700,
+      "Person out of water": 653,
+      "Swimming": 7225
+    },
+    "split_image_counts": {
+      "train": 8051,
+      "valid": 1178,
+      "test": 755
+    },
+    "source_video_leakage": {
+      "cross_split_groups": 27,
+      "total_groups": 35,
+      "images_in_cross_split_groups": 3884,
+      "images_in_cross_split_groups_pct": 0.389
+    }
+  },
+  "validation_metrics": {
+    "split": "val",
+    "precision": 0.867,
+    "recall": 0.8327,
+    "map50": 0.8755,
+    "map50_95": 0.5449,
+    "per_class": {
+      "distress_candidate": {
+        "precision": 0.8795,
+        "recall": 0.8457,
+        "ap50": 0.9122,
+        "ap50_95": 0.5824
+      },
+      "out_of_water": {
+        "precision": 0.8832,
+        "recall": 0.8178,
+        "ap50": 0.8623,
+        "ap50_95": 0.5764
+      },
+      "normal_swimming": {
+        "precision": 0.8382,
+        "recall": 0.8346,
+        "ap50": 0.8519,
+        "ap50_95": 0.4759
+      }
+    },
+    "artifacts_dir": "cv-service/runs/eval-val"
+  },
+  "test_metrics": {
+    "split": "test",
+    "precision": 0.8107,
+    "recall": 0.7483,
+    "map50": 0.7727,
+    "map50_95": 0.453,
+    "per_class": {
+      "distress_candidate": {
+        "precision": 0.7644,
+        "recall": 0.8326,
+        "ap50": 0.8131,
+        "ap50_95": 0.488
+      },
+      "out_of_water": {
+        "precision": 0.8058,
+        "recall": 0.7024,
+        "ap50": 0.7573,
+        "ap50_95": 0.4663
+      },
+      "normal_swimming": {
+        "precision": 0.8619,
+        "recall": 0.7099,
+        "ap50": 0.7477,
+        "ap50_95": 0.4046
+      }
+    },
+    "artifacts_dir": "cv-service/runs/eval-test"
+  },
+  "metric_caveats": [
+    "Validation/test-set object-detection performance on the Roboflow dataset only; not medical or real-world drowning-detection accuracy.",
+    "Frames from the same source video span splits (see dataset.source_video_leakage), so held-out metrics are optimistic relative to clip-independent evaluation."
+  ]
+}

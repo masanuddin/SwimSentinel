@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+PyYAML
+opencv-python
+ultralytics
+numpy
+pytest
+pytest-cov
+pytest-asyncio
+httpx

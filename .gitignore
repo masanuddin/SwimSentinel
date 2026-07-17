@@ -2,5 +2,34 @@ node_modules
 dist
 *.local
 .DS_Store
-CLAUDE.md
 wireframes/
+
+# --- CV service ---------------------------------------------------------- #
+
+# env files may hold Supabase keys or RTSP camera credentials. Never commit.
+.env
+.env.*
+!.env.example
+cv-service/.env
+cv-service/.env.*
+
+# local/runtime artifacts
+cv-service/.venv/
+cv-service/__pycache__/
+cv-service/**/__pycache__/
+.pytest_cache/
+cv-service/.coverage
+cv-service/data/raw/
+cv-service/data/processed/
+cv-service/runs/
+cv-service/models/*.pt
+cv-service/models/*.onnx
+
+# local test recordings (large video files)
+cv-service/data/test-footage/
+
+# stray base weights Ultralytics may download to the CWD (e.g. AMP check)
+/*.pt
+cv-service/*.pt
+cv-service/training/*.pt
+cv-service/evaluation/*.pt

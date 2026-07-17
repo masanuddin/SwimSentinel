@@ -1,0 +1,300 @@
+{
+  "dataset_root": "cv-service\\data\\raw\\Drowning Detection.v1i.yolov11",
+  "config": {
+    "nc": 3,
+    "names": [
+      "Drowning",
+      "Person out of water",
+      "Swimming"
+    ],
+    "declared_splits": {
+      "train": "../train/images",
+      "val": "../valid/images",
+      "test": "../test/images"
+    },
+    "roboflow": {
+      "workspace": "object-detection-model",
+      "project": "drowning-detection-wqiom",
+      "version": 1,
+      "license": "CC BY 4.0",
+      "url": "https://universe.roboflow.com/object-detection-model/drowning-detection-wqiom/dataset/1"
+    }
+  },
+  "splits": {
+    "train": {
+      "image_count": 8051,
+      "label_count": 8051,
+      "split_share": 0.8064,
+      "images_without_labels": [],
+      "labels_without_images": [],
+      "empty_label_files": 0,
+      "unreadable_images": [],
+      "malformed_rows": 0,
+      "out_of_range_class_rows": 0,
+      "invalid_coordinate_rows": 0,
+      "unexpected_class_ids": [],
+      "object_counts_by_class": {
+        "Drowning": 8719,
+        "Person out of water": 514,
+        "Swimming": 5706
+      },
+      "image_counts_by_class": {
+        "Drowning": 6789,
+        "Person out of water": 360,
+        "Swimming": 2320
+      },
+      "multi_class_images": 1238,
+      "resolutions": {
+        "640x640": 8051
+      }
+    },
+    "valid": {
+      "image_count": 1178,
+      "label_count": 1178,
+      "split_share": 0.118,
+      "images_without_labels": [],
+      "labels_without_images": [],
+      "empty_label_files": 0,
+      "unreadable_images": [],
+      "malformed_rows": 0,
+      "out_of_range_class_rows": 0,
+      "invalid_coordinate_rows": 0,
+      "unexpected_class_ids": [],
+      "object_counts_by_class": {
+        "Drowning": 1264,
+        "Person out of water": 74,
+        "Swimming": 895
+      },
+      "image_counts_by_class": {
+        "Drowning": 978,
+        "Person out of water": 53,
+        "Swimming": 377
+      },
+      "multi_class_images": 200,
+      "resolutions": {
+        "640x640": 1178
+      }
+    },
+    "test": {
+      "image_count": 755,
+      "label_count": 755,
+      "split_share": 0.0756,
+      "images_without_labels": [],
+      "labels_without_images": [],
+      "empty_label_files": 0,
+      "unreadable_images": [],
+      "malformed_rows": 0,
+      "out_of_range_class_rows": 0,
+      "invalid_coordinate_rows": 0,
+      "unexpected_class_ids": [],
+      "object_counts_by_class": {
+        "Drowning": 717,
+        "Person out of water": 65,
+        "Swimming": 624
+      },
+      "image_counts_by_class": {
+        "Drowning": 548,
+        "Person out of water": 36,
+        "Swimming": 286
+      },
+      "multi_class_images": 103,
+      "resolutions": {
+        "640x640": 755
+      }
+    }
+  },
+  "distribution": {
+    "total_images": 9984,
+    "total_objects": 18578,
+    "object_counts_by_class": {
+      "Drowning": 10700,
+      "Person out of water": 653,
+      "Swimming": 7225
+    },
+    "object_share_by_class": {
+      "Drowning": 0.576,
+      "Person out of water": 0.0351,
+      "Swimming": 0.3889
+    },
+    "image_counts_by_class": {
+      "Drowning": 8315,
+      "Person out of water": 449,
+      "Swimming": 2983
+    }
+  },
+  "leakage": {
+    "cross_split_exact_duplicate_groups": 0,
+    "cross_split_exact_duplicates": [],
+    "duplicate_filenames_across_splits": [],
+    "source_group_analysis": {
+      "parsing_rule": "Strip the Roboflow suffix '<stem>.rf.<hash>.<ext>'. If the stem matches '<clip>_<videoext>-<frame>' (videoext in mp4/mov/avi/mkv/webm/m4v) treat the clip as a high-confidence source group; otherwise fall back to the shared original stem (low confidence).",
+      "video_frame_groups": {
+        "confidence": "high",
+        "images_matched": 4053,
+        "coverage_pct": 0.4059,
+        "total_groups": 35,
+        "single_split_groups": 8,
+        "cross_split_groups": 27,
+        "images_in_cross_split_groups": 3884,
+        "images_in_cross_split_groups_pct": 0.389,
+        "examples": [
+          {
+            "group": "drowning1_mp4",
+            "images": 840,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning53_mp4_mp4",
+            "images": 293,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning47_mp4",
+            "images": 279,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning51_mp4_mp4",
+            "images": 275,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning52_mp4_mp4",
+            "images": 263,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning20_mp4",
+            "images": 194,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "12_mp4",
+            "images": 171,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "video_2022-12-07_23-08-12_mp4",
+            "images": 170,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          }
+        ]
+      },
+      "shared_original_name_groups": {
+        "confidence": "low_ambiguous",
+        "note": "Identical pre-.rf. stems; may be re-exports of one image or coincidental numeric-name collisions across merged sources. Not proof of same-source frames on its own.",
+        "total_groups": 1306,
+        "single_split_groups": 693,
+        "cross_split_groups": 613,
+        "images_in_cross_split_groups": 3677,
+        "images_in_cross_split_groups_pct": 0.3683,
+        "examples": [
+          {
+            "group": "youtube-2_jpg",
+            "images": 54,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "youtube-1_jpg",
+            "images": 43,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "youtube-5_jpg",
+            "images": 41,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "203512036-1-_jpg",
+            "images": 39,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "youtube-3_jpg",
+            "images": 39,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "youtube-10_jpg",
+            "images": 36,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "drowning_small-1-1000x573_jpg",
+            "images": 35,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          },
+          {
+            "group": "youtube-0_jpg",
+            "images": 35,
+            "splits": [
+              "test",
+              "train",
+              "valid"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
