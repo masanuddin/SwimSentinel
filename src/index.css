@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * TirtaJaga design tokens — SATU-SATUNYA sumber warna/tipografi.
+ * SwimSentinel design tokens — SATU-SATUNYA sumber warna/tipografi.
  * Dipakai sebagai utility Tailwind: bg-bg, bg-panel, border-border,
  * text-text, text-muted, bg-accent, text-safe/warn/danger, dst.
  * Versi JS (untuk SVG/canvas/Web Audio nanti): src/theme/tokens.js

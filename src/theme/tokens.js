@@ -1,5 +1,5 @@
 /**
- * Design tokens TirtaJaga — versi JS, mirror dari @theme di src/index.css.
+ * Design tokens SwimSentinel — versi JS, mirror dari @theme di src/index.css.
  * Pakai ini kalau butuh nilai warna di luar className Tailwind
  * (SVG dinamis, canvas, chart, Web Audio UI, dsb).
  */

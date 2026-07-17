@@ -80,6 +80,9 @@ export function AppStateProvider({ children }) {
   const [swimmers, setSwimmers] = useState(seedSwimmers)
   const [alarms, setAlarms] = useState(seedAlarms)
   const [muted, setMuted] = useState(false)
+  // Auth stub — nanti diisi session Supabase; null = belum login.
+  // Bentuk minimal yang dipakai UI: { email, name? }
+  const [user, setUser] = useState(null)
 
   // Mirror swimmers untuk dibaca dari dalam timer (hindari closure basi)
   const swimmersRef = useRef(swimmers)
@@ -241,6 +244,8 @@ export function AppStateProvider({ children }) {
       swimmers,
       alarms,
       muted,
+      user,
+      setUser,
       hasActiveAlarm,
       addAlarm,
       updateSwimmer,
@@ -255,6 +260,7 @@ export function AppStateProvider({ children }) {
       swimmers,
       alarms,
       muted,
+      user,
       hasActiveAlarm,
       addAlarm,
       updateSwimmer,

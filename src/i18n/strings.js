@@ -4,11 +4,18 @@
  */
 export const strings = {
   id: {
-    appName: 'TirtaJaga',
+    appName: 'SwimSentinel',
     appTagline: 'Pool Safety Monitoring',
     muteAlarm: 'Bisukan alarm',
     unmuteAlarm: 'Bunyikan alarm',
     navLabel: 'Navigasi utama',
+    auth: {
+      menuLabel: 'Menu akun',
+      login: 'Masuk',
+      register: 'Daftar',
+      dashboard: 'Dashboard',
+      logout: 'Keluar',
+    },
     toast: {
       struggling: '{id} terdeteksi meronta — {zone}',
       alarm: 'ALARM — {zone} — {id}',
@@ -117,7 +124,7 @@ export const strings = {
       heroLine1: 'Deteksi Tenggelam.',
       heroLine2: 'Sebelum Terlambat.',
       heroLead:
-        'TirtaJaga memadukan gelang sensor gyro dan kamera bawah air untuk menangkap tanda tenggelam yang senyap — lalu membunyikan alarm dan menunjukkan lokasi korban ke lifeguard dalam hitungan detik.',
+        'SwimSentinel memadukan gelang sensor gyro dan kamera bawah air untuk menangkap tanda tenggelam yang senyap — lalu membunyikan alarm dan menunjukkan lokasi korban ke lifeguard dalam hitungan detik.',
       heroStat: '±236.000',
       heroStatCaption: 'jiwa melayang akibat tenggelam setiap tahun di dunia — WHO',
       cta: 'Buka Simulasi',
@@ -161,11 +168,18 @@ export const strings = {
     },
   },
   en: {
-    appName: 'TirtaJaga',
+    appName: 'SwimSentinel',
     appTagline: 'Pool Safety Monitoring',
     muteAlarm: 'Mute alarm',
     unmuteAlarm: 'Unmute alarm',
     navLabel: 'Main navigation',
+    auth: {
+      menuLabel: 'Account menu',
+      login: 'Login',
+      register: 'Register',
+      dashboard: 'Dashboard',
+      logout: 'Log Out',
+    },
     toast: {
       struggling: '{id} struggling detected — {zone}',
       alarm: 'ALARM — {zone} — {id}',
@@ -274,7 +288,7 @@ export const strings = {
       heroLine1: 'Detect Drowning.',
       heroLine2: 'Before It’s Too Late.',
       heroLead:
-        'TirtaJaga fuses a gyro-sensor wristband with an underwater camera to catch the silent signs of drowning — then sounds the alarm and pinpoints the victim for lifeguards within seconds.',
+        'SwimSentinel fuses a gyro-sensor wristband with an underwater camera to catch the silent signs of drowning — then sounds the alarm and pinpoints the victim for lifeguards within seconds.',
       heroStat: '±236,000',
       heroStatCaption: 'lives lost to drowning every year worldwide — WHO',
       cta: 'Open Simulation',
